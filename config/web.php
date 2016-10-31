@@ -8,16 +8,28 @@ $params = ArrayHelper::merge(
 
 $config = [
     'id' => 'app',
+    'modules' => [
+        'main' => [
+            'id' => 'main',
+            'class' => 'app\modules\main\Module',
+        ],
+        'user' => [
+            'id' => 'user',
+            'class' => 'app\modules\user\Module',
+        ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['user/default/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
         'request' => [
             'cookieValidationKey' => '',
+            'baseUrl' => '',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -27,6 +39,7 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'user';
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
