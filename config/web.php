@@ -12,6 +12,8 @@ $config = [
         'main' => [
             'id' => 'main',
             'class' => 'app\modules\main\Module',
+            'controllerNamespace' => 'app\modules\main\controllers'
+
         ],
         'user' => [
             'id' => 'user',
@@ -39,7 +41,6 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'user';
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
