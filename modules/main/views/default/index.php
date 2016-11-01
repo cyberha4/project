@@ -14,7 +14,8 @@ $this->title = 'My Yii Application';
             }
         ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">You have successfully created your Yii-powered application. It was added from notebook for testing sending
+         commit on github</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
