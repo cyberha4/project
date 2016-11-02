@@ -16,13 +16,12 @@ $config = [
 
         ],
         'user' => [
-            'id' => 'user',
             'class' => 'app\modules\user\Module',
         ],
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\user\models\user',
             'enableAutoLogin' => true,
             'loginUrl' => ['user/default/login'],
         ],
