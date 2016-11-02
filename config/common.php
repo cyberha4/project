@@ -8,6 +8,7 @@ $params = ArrayHelper::merge(
 
 return [
     'basePath' => dirname(__DIR__),
+    'name' => 'kiberha4',
     'bootstrap' => ['log'],
     'components' => [
         'db' => [
@@ -38,6 +39,14 @@ return [
         ],
         'log' => [
             'class' => 'yii\log\Dispatcher',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+            ],
         ],
     ],
     'params' => $params,

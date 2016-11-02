@@ -8,6 +8,7 @@ $params = ArrayHelper::merge(
 
 $config = [
     'id' => 'app',
+    'language'=>'ru-RU',
     'modules' => [
         'main' => [
             'id' => 'main',
