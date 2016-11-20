@@ -5,6 +5,7 @@ namespace app\modules\user\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "user".
@@ -26,6 +27,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     const STATUS_BLOCKED = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_WAIT = 2;
+
+    const SCENARIO_PROFILE = 'profile';
 
     /**
      * @inheritdoc
@@ -62,6 +65,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
         ];
+    }
+
+    public function scenarios()
+    {
+        return ArrayHelper::merge(parent::scenarios(), [
+            self::SCENARIO_PROFILE => ['email'],
+        ]);
     }
 
     /**

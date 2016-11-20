@@ -52,6 +52,11 @@ class DefaultController extends Controller
             ],
         ];
     }
+
+    public function actionIndex()
+    {
+        return $this->redirect(['profile/index'], 301);
+    }
  
     public function actionLogin()
     {
