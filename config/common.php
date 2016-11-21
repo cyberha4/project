@@ -10,6 +10,20 @@ return [
     'basePath' => dirname(__DIR__),
     'name' => 'kiberha4',
     'bootstrap' => ['log'],
+    'modules' => [
+        'main' => [
+            'id' => 'main',
+            'class' => 'app\modules\main\Module',
+            'controllerNamespace' => 'app\modules\main\controllers'
+
+        ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+        ],
+        'user' => [
+            'class' => 'app\modules\user\Module',
+        ],
+    ],
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',

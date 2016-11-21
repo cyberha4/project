@@ -9,17 +9,7 @@ $params = ArrayHelper::merge(
 $config = [
     'id' => 'app',
     'language'=>'ru-RU',
-    'modules' => [
-        'main' => [
-            'id' => 'main',
-            'class' => 'app\modules\main\Module',
-            'controllerNamespace' => 'app\modules\main\controllers'
-
-        ],
-        'user' => [
-            'class' => 'app\modules\user\Module',
-        ],
-    ],
+    
     'components' => [
         'user' => [
             'identityClass' => 'app\modules\user\models\user',
