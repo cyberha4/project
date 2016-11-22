@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $class = 'default';
                         };
                         $html = Html::tag('span', Html::encode($model->getStatusName()), ['class' => 'label label-' . $class]);
-                        $html .= " " . ++$index . " |||" $key";
+                        $html .= " " . ++$index . " ||| $key";
                     return $value === null ? $column->grid->emptyCell : $html;
             }
             ],
