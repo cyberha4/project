@@ -1,0 +1,30 @@
+<?php
+namespace app\modules\admin\components;
+ 
+use app\modules\admin\models\User;
+use yii\grid\DataColumn;
+use yii\helpers\Html;
+ 
+class UserStatusColumn extends DataColumn
+{
+    protected function renderDataCellContent($model, $key, $index)
+    {
+        /** @var User $model */
+        $value = $this->getDataCellValue($model, $key, $index);
+        \Yii::$app->params['test'] = $value;
+        switch ($value) {
+            case User::STATUS_ACTIVE:
+                $class = 'success';
+                break;
+            case User::STATUS_WAIT:
+                $class = 'warning';
+                break;
+            case User::STATUS_BLOCKED:
+            default:
+                $class = 'default';
+        };
+        $html = Html::tag('span', Html::encode($model->getStatusName()), ['class' => 'label label-' . $class]);
+        $html .= " " . ++$index . " ||| $key";
+        return $value === null ? $this->grid->emptyCell : $html;
+    }
+}

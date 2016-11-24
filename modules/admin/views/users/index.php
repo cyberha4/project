@@ -3,7 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\components\grid\ActionColumn;
+use app\components\grid\SetColumn;
 use app\modules\admin\models\user;
+use app\modules\admin\components\UserStatusColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\UserSearch */
@@ -43,30 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'password_reset_token',
              'email:email',
             [
+                'class' => SetColumn::className(),
                 'filter' => User::getStatusesArray(),
                 'attribute' => 'status',
-                'format' => 'raw',
-                //'value' => 'statusName', //если передается строка, то автоматически вызывается метод модели, если передается анонимная ф-ия, то она вызывается через call_user_func
-                'value' => function ($model, $key, $index, $column) {
-                        /** @var User $model */
-                        /** @var \yii\grid\DataColumn $column */
-                        $value = $model->{$column->attribute};
-                        $value = $model->status;// не совсем корректно так делать, потому что это уже сделано в datacolumn
-                        switch ($value) {
-                            case User::STATUS_ACTIVE:
-                                $class = 'success';
-                                break;
-                            case User::STATUS_WAIT:
-                                $class = 'warning';
-                                break;
-                            case User::STATUS_BLOCKED:
-                            default:
-                                $class = 'default';
-                        };
-                        $html = Html::tag('span', Html::encode($model->getStatusName()), ['class' => 'label label-' . $class]);
-                        $html .= " " . ++$index . " ||| $key";
-                    return $value === null ? $column->grid->emptyCell : $html;
-            }
+                'name' => 'statusName',
+                'cssCLasses' => [
+                    User::STATUS_ACTIVE => 'success',
+                    User::STATUS_WAIT => 'warning',
+                    User::STATUS_BLOCKED => 'default',
+                ],
             ],
 
             [
