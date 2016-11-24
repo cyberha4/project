@@ -21,7 +21,7 @@ use app\modules\admin\models\User;
  
     <?= $form->field($model, 'newPasswordRepeat')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->userDropDownList(User::getStatusesArray()) ?>
+    <?= $form->field($model, 'status')->DropDownList(User::getStatusesArray()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
