@@ -37,6 +37,9 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
+        if (\Yii::$app instanceof \yii\console\Application) {
+            $this->controllerNamespace = 'app\modules\admin\commands';
+        }
         // custom initialization code goes here
     }
 }

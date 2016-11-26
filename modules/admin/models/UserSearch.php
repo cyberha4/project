@@ -60,6 +60,7 @@ class UserSearch extends Model
         ]);
         
         \Yii::$app->params['params'] = $params;
+        \Yii::$app->params['class'] = get_class($this);
         $this->load($params);
  
         if (!$this->validate()) {
