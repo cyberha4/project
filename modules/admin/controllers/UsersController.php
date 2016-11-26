@@ -41,6 +41,7 @@ class UsersController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'expire' => $this->module->passwordResetTokenExpire . "22",
         ]);
     }
 

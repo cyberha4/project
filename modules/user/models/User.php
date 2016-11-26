@@ -6,6 +6,8 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
+use yii\web\BadRequestHttpException;
+
 
 /**
  * This is the model class for table "user".
@@ -184,10 +186,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return static|null
      */
-    public static function findByPasswordResetToken($token)
+    public static function findByPasswordResetToken($token, $timeout = 3600)
     {
-        if (!static::isPasswordResetTokenValid($token)) {
-            return null;
+        if (!static::isPasswordResetTokenValid($token, $timeout)) {
+            throw new BadRequestHttpException('Истекло время смены пароля, пароль необходимо сменить в течении часа, мудень');
         }
         return static::findOne([
             'password_reset_token' => $token,
@@ -201,15 +203,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return boolean
      */
-    public static function isPasswordResetTokenValid($token)
+    public static function isPasswordResetTokenValid($token, $timeout)
     {
         if (empty($token)) {
             return false;
         }
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        //$expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        //$expire = 3650;
         $parts = explode('_', $token);
         $timestamp = (int) end($parts);
-        return $timestamp + $expire >= time();
+        return $timestamp + $timeout >= time();
     }
  
     /**

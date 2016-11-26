@@ -13,6 +13,7 @@ class PasswordResetForm extends Model
      * @var \common\models\User
      */
     private $_user;
+    private $timeout;
     /**
      * Creates a form model given a token.
      *
@@ -20,12 +21,14 @@ class PasswordResetForm extends Model
      * @param array $config name-value pairs that will be used to initialize the object properties
      * @throws \yii\base\InvalidParamException if token is empty or not valid
      */
-    public function __construct($token, $config = [])
+    public function __construct($token, $timeout = 3600, $config = [])
     {
         if (empty($token) || !is_string($token)) {
             throw new InvalidParamException('Password reset token cannot be blank.');
         }
-        $this->_user = User::findByPasswordResetToken($token);
+        $expire = \app\modules\user\Module::getInstance()->passwordResetTokenExpire;
+        $this->_user = User::findByPasswordResetToken($token, $expire);
+        $this->timeout = 10 < (int) $timeout ? $timeout : 3600;
         if (!$this->_user) {
             throw new InvalidParamException('Wrong password reset token.');
         }

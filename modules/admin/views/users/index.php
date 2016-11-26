@@ -7,6 +7,7 @@ use app\components\grid\ActionColumn;
 use app\components\grid\SetColumn;
 use app\modules\admin\models\user;
 use app\modules\admin\components\UserStatusColumn;
+use app\modules\admin\module;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\UserSearch */
@@ -16,9 +17,9 @@ $this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 //$searchModel->id = 2;
 ?>
-<div class="user-index">
+<div class="admin-user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) . module::t('module', 'test') . $expire?></h1>
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>

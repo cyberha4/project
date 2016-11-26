@@ -11,6 +11,7 @@ class Module extends \yii\base\Module
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\user\controllers';
+    public $passwordResetTokenExpire = 3601;
 
     /**
      * @inheritdoc

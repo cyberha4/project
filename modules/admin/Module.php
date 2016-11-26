@@ -13,6 +13,7 @@ class Module extends \yii\base\Module
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\admin\controllers';
+    public $passwordResetTokenExpire = 3600;
 
     public function behaviors()
     {
@@ -29,6 +30,10 @@ class Module extends \yii\base\Module
         ];
     }
 
+    public static function t($category, $message, $params = [], $language = null)
+    {
+        return \Yii::t('modules/admin/' . $category, $message, $params, $language);
+    }
 
     /**
      * @inheritdoc

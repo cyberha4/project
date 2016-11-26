@@ -9,7 +9,12 @@ $params = ArrayHelper::merge(
 return [
     'basePath' => dirname(__DIR__),
     'name' => 'kiberha4',
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+                    'log',
+                    'app\modules\admin\Bootstrap',
+                    //'app\modules\main\Bootstrap',
+                    //'app\modules\user\Bootstrap',
+                    ],
     'modules' => [
         'main' => [
             'id' => 'main',
@@ -22,6 +27,8 @@ return [
         ],
         'user' => [
             'class' => 'app\modules\user\Module',
+            'passwordResetTokenExpire' => 3600,
+
         ],
     ],
     'components' => [
