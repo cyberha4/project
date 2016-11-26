@@ -83,7 +83,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'created_at' => 'Создан',
             'updated_at' => 'Обновлён',
-            'username' => 'Имя пользователя',
+            'username' => 'Имя',
             'email' => 'Email',
             'status' => 'Статус',
         ];

@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'created_at') ?>
-
-    <?= $form->field($model, 'updated_at') ?>
-
-    <?= $form->field($model, 'username') ?>
-
-    <?= $form->field($model, 'auth_key') ?>
+    <?php echo $form->field($model, 'id') ?>
+ 
+    <?php //echo $form->field($model, 'created_at') ?>
+ 
+    <?php //echo $form->field($model, 'updated_at') ?>
+ 
+    <?php echo $form->field($model, 'username') ?>
+ 
+    <?php //echo $form->field($model, 'auth_key') ?>
 
     <?php // echo $form->field($model, 'email_confirm_token') ?>
 
@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'email') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php echo $form->field($model, 'status') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
