@@ -1,10 +1,13 @@
 <?php
 use yii\helpers\ArrayHelper;
 
-$params = ArrayHelper::merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
+// $params = ArrayHelper::merge(
+//     require(__DIR__ . '/params.php'),
+//     require(__DIR__ . '/params-local.php')
+// );
+
+$params =     require(__DIR__ . '/params.php');
+
 
 return [
     'basePath' => dirname(__DIR__),

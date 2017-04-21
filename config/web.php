@@ -1,10 +1,12 @@
 <?php
 use yii\helpers\ArrayHelper;
 
-$params = ArrayHelper::merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
+// $params = ArrayHelper::merge(
+//     require(__DIR__ . '/params.php'),
+//     require(__DIR__ . '/params-local.php')
+// );
+
+$params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'app',
@@ -17,7 +19,7 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'request' => [
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => 'dsadasd',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
