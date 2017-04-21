@@ -1,17 +1,27 @@
 <?php
 use yii\helpers\ArrayHelper;
 
-// $params = ArrayHelper::merge(
-//     require(__DIR__ . '/params.php'),
-//     require(__DIR__ . '/params-local.php')
-// );
-
-$params =     require(__DIR__ . '/params.php');
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 
 
 return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'main' => [
+            'class' => 'app\modules\main\Module',
+        ],
+        'user' => [
+            'class' => 'app\modules\user\Module',
+        ],
+    ],
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
