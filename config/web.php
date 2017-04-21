@@ -1,12 +1,10 @@
 <?php
 use yii\helpers\ArrayHelper;
 
-// $params = ArrayHelper::merge(
-//     require(__DIR__ . '/params.php'),
-//     require(__DIR__ . '/params-local.php')
-// );
-
-$params = require(__DIR__ . '/params.php');
+$params = ArrayHelper::merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 
 $config = [
     'id' => 'app',
@@ -15,14 +13,15 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        'assetManager' => [
+            'linkAssets' => true,
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
         'request' => [
+            'baseUrl' => '',
             'cookieValidationKey' => 'dsadasd',
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
         ],
     ],
 ];
