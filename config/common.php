@@ -13,6 +13,7 @@ return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@main'   => '@app/modules/main',
     ],
     'modules' => [
         'main' => [

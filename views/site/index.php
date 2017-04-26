@@ -1,6 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $time string */
+
+use yii\helpers\Html;
+use yii\widgets\Pjax;
 
 $this->title = 'My Yii Application';
 ?>
@@ -9,7 +13,12 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">
+            <?php Pjax::begin(); ?>
+            <?= Html::a("Обновить", ['site/index'], ['class' => 'btn btn-lg btn-primary']);?>
+            <h1>Сейчас: <?= $time ?></h1>
+            <?php Pjax::end(); ?>
+        </p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
