@@ -10,9 +10,6 @@ class ContactController extends \yii\web\Controller
     public function actions()
     {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
@@ -20,23 +17,43 @@ class ContactController extends \yii\web\Controller
         ];
     }
 
+    /**
+     * Change view path
+     */
     public function init()
     {
-        Yii::trace(Yii::getAlias('@main') . ' change view path', $this->className());
         $this->setViewPath('@main/views/testContact');
         parent::init();
     }
 
+    /**
+     * @override
+     * Render without layout
+     * @param string $view
+     * @param array $params
+     * @return string
+     */
     public function render($view, $params = [])
     {
         return $this->getView()->render($view, $params, $this);
     }
 
+    /**
+     * Render with layout (use old method render)
+     * @param $view
+     * @param array $params
+     * @return string
+     */
     public function oldRender($view, $params = [])
     {
         return parent::render($view, $params);
     }
 
+    /**
+     * With a probability of 50 percent render page with layout(header, footer)
+     * or not
+     * @return string
+     */
     public function actionIndex()
     {
         $model = new ContactForm();
