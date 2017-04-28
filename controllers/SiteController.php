@@ -126,8 +126,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionAbout() : int
     {
-        return $this->render('about');
+        return 1;
     }
 }
