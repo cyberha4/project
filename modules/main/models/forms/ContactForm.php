@@ -61,4 +61,9 @@ class ContactForm extends Model
         }
         return false;
     }
+
+    public function fillCaptchaInput($captchaText)
+    {
+        $this->verifyCode = $captchaText;
+    }
 }

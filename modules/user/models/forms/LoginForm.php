@@ -3,6 +3,7 @@
 namespace app\modules\user\models\forms;
 
 use app\modules\user\models\User;
+use phpDocumentor\Reflection\Types\String_;
 use Yii;
 use yii\base\Model;
 
@@ -60,6 +61,7 @@ class LoginForm extends Model
 
     /**
      * Logs in a user using the provided username and password.
+     * If username anb password equals admin - login him
      * @return bool whether the user is logged in successfully
      */
     public function login()

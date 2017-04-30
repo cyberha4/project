@@ -164,7 +164,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return bool
      */
-    private static function isPasswordResetTokenValid($token)
+    public static function isPasswordResetTokenValid($token)
     {
         if(empty($token))
             return false;
