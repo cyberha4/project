@@ -1,6 +1,7 @@
 <?php
-namespace app\modules\user\models;
+namespace app\modules\user\models\forms;
 
+use app\modules\user\models\User;
 use yii\base\InvalidParamException;
 use yii\base\Model;
 use Yii;
@@ -26,6 +27,7 @@ class EmailConfirmForm extends Model
         }
         $this->_user = User::findByEmailConfirmToken($token);
         if (!$this->_user) {
+            Yii::error('Token : ' . $token, __METHOD__);
             throw new InvalidParamException('Неверный токен.');
         }
         parent::__construct($config);

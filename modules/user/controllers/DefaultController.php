@@ -2,11 +2,11 @@
 
 namespace app\modules\user\controllers;
 
-use app\modules\user\models\EmailConfirmForm;
+use app\modules\user\models\forms\EmailConfirmForm;
 use app\modules\user\models\forms\LoginForm;
 use app\modules\user\models\forms\PasswordResetRequestForm;
 use app\modules\user\models\forms\ResetPasswordForm;
-use app\modules\user\models\SignupForm;
+use app\modules\user\models\forms\SignupForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\filters\AccessControl;
@@ -118,10 +118,10 @@ class DefaultController extends Controller
      * @return \yii\web\Response
      * @throws BadRequestHttpException
      */
-    public function actionEmailConfirm($token)
+    public function actionEmailConfirm($tokenn)
     {
         try {
-            $model = new EmailConfirmForm($token);
+            $model = new EmailConfirmForm($tokenn);
         } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
